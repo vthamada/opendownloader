@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gravar reprodução • OpenDownloader</title>
+  <link rel="stylesheet" href="recorder.css">
+  <script src="recording-core.js" defer></script>
+  <script src="recording-crop.js" defer></script>
+  <script src="recorder.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><span class="mark" aria-hidden="true">●</span><div><p class="eyebrow">OpenDownloader</p><h1>Gravar reprodução</h1></div></header>
+    <p>Escolha uma aba ou janela no seletor do navegador. Na captura de uma aba, ative o compartilhamento do áudio para gravar o som. O microfone não será usado.</p>
+    <p class="notice">Conteúdo protegido pode aparecer preto ou sem áudio. A gravação respeita as proteções do navegador.</p>
+    <div class="settings">
+      <label>Nome da gravação<input id="title" maxlength="256" value="Gravação de vídeo" autocomplete="off"></label>
+      <label>Formato<select id="format"></select></label>
+      <label>Resolução máxima<select id="quality"><option value="source">Resolução da origem</option><option value="1080">Até 1080p</option><option value="720">Até 720p</option></select></label>
+      <label>Qualidade da gravação<select id="bitrate"><option value="auto">Automática do navegador</option><option value="economy">Econômica • vídeo 2,5 Mb/s</option><option value="balanced" selected>Equilibrada • vídeo 6 Mb/s</option><option value="high">Alta • vídeo 12 Mb/s</option></select></label>
+      <label>Parar e salvar após<select id="duration"><option value="0">Sem limite de tempo</option><option value="1">1 minuto gravado</option><option value="5">5 minutos gravados</option><option value="15">15 minutos gravados</option><option value="30">30 minutos gravados</option><option value="60">1 hora gravada</option><option value="120">2 horas gravadas</option><option value="240">4 horas gravadas</option></select></label>
+    </div>
+    <p class="hint">Os formatos e as taxas disponíveis dependem deste navegador. A taxa escolhida é uma preferência, não uma garantia de qualidade ou tamanho. O arquivo mantém o formato gravado, sem conversão. O tempo pausado não conta no limite; a parada automática pode atrasar se o navegador suspender esta aba.</p>
+    <section id="preview-panel" class="preview-panel" hidden aria-label="Prévia local da captura">
+      <h2>Ajuste a área de gravação</h2>
+      <div id="preview-stage" class="preview-stage"><video id="preview" autoplay muted playsinline aria-label="Prévia sem som da captura selecionada"></video><div id="crop-overlay" class="crop-overlay" aria-hidden="true"><div id="crop-selection" class="crop-selection"></div></div></div>
+      <p class="hint">Arraste sobre a prévia para selecionar uma área ou ajuste os pixels abaixo. O contorno indica a área que será gravada; a prévia mantém a superfície inteira visível.</p>
+      <div class="crop-fields"><label>Esquerda (px)<input id="crop-x" type="number" min="0" step="1" value="0"></label><label>Topo (px)<input id="crop-y" type="number" min="0" step="1" value="0"></label><label>Largura (px)<input id="crop-width" type="number" min="2" step="1" value="2"></label><label>Altura (px)<input id="crop-height" type="number" min="2" step="1" value="2"></label></div>
+      <div class="actions"><button id="crop-reset" type="button" class="secondary">Superfície inteira</button><button id="record" type="button" disabled>Gravar área selecionada</button><button id="capture-cancel" type="button" class="secondary">Cancelar seleção</button></div>
+      <p id="crop-status" class="hint" role="status"></p>
+      <p class="hint">A prévia fica sem som para evitar eco. O recorte mantém o áudio compartilhado inteiro. Mantenha esta aba visível ao gravar uma área: a suspensão pelo navegador pode reduzir os quadros. O recorte não remove proteções de conteúdo.</p>
+    </section>
+    <section id="silent-choice" hidden aria-labelledby="silent-title"><h2 id="silent-title">Nenhum áudio foi compartilhado</h2><p>Você pode continuar com vídeo sem som ou cancelar e escolher outra superfície, compartilhando o áudio.</p><div class="actions"><button id="silent-continue" type="button">Continuar sem áudio</button><button id="silent-cancel" type="button" class="secondary">Cancelar captura</button></div></section>
+    <p id="diagnostic" class="notice" role="status" hidden></p>
+    <section class="monitor" aria-label="Estado da gravação"><p id="status" role="status" aria-live="polite">Pronto para escolher a aba ou janela.</p><div class="metrics"><span><strong id="elapsed">00:00</strong> gravados</span><span><strong id="bytes">0 B</strong> recebidos pelo aplicativo</span></div></section>
+    <div class="actions"><button id="start" type="button">Escolher tela ou aba</button><button id="pause" type="button" class="secondary" disabled>Pausar</button><button id="stop" type="button" class="secondary" disabled>Parar e salvar</button></div>
+    <p id="receipt" class="receipt" hidden></p>
+    <p class="hint">Mantenha esta aba aberta até o aplicativo confirmar o recebimento. Fechá-la durante a gravação preserva apenas um arquivo parcial, que pode não ser reproduzível.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,40 @@
+:root {color-scheme: light; font-family: system-ui, "Segoe UI", sans-serif; color: #263433; background: #f2f4ef;}
+* {box-sizing: border-box;}
+body {margin: 0; padding: 36px 18px;}
+main {max-width: 760px; margin: auto; background: #fff; border: 1px solid #d9e0d5; border-radius: 18px; padding: 32px;}
+header {display: flex; gap: 16px; align-items: center; margin-bottom: 24px;}
+.mark {display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; color: #e7f0ba; background: #264a3e; font-size: 23px;}
+.eyebrow {font-size: 13px; margin: 0 0 4px; color: #52655c;}
+h1 {font-size: 28px; margin: 0; letter-spacing: -.8px;}
+h2 {font-size: 17px; margin: 0 0 10px;}
+p {font-size: 14px; line-height: 1.65; margin: 0 0 18px;}
+.notice {background: #f7f1df; padding: 13px 16px; border-radius: 9px; color: #675523;}
+.settings {display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0 12px;}
+label {font-size: 13px; font-weight: 650; display: grid; gap: 7px;}
+label:first-child {grid-column: 1 / -1;}
+input, select {width: 100%; padding: 11px; color: #263433; background: #fff; border: 1px solid #afc0ae; border-radius: 8px; font: inherit;}
+.hint {font-size: 12px; color: #59695f;}
+.monitor, #silent-choice {background: #eff3e9; border: 1px solid #d4dfca; padding: 18px; border-radius: 12px; margin: 22px 0;}
+.preview-panel {margin: 22px 0;}
+.preview-panel video {display: block; width: 100%; height: auto; background: #172923; border-radius: 9px;}
+.preview-stage {position: relative; overflow: hidden; border-radius: 9px;}
+.crop-overlay {position: absolute; inset: 0; cursor: crosshair; touch-action: none;}
+.crop-selection {position: absolute; inset: 0; border: 3px solid #cbed73; box-shadow: 0 0 0 4000px #0007; pointer-events: none;}
+.crop-fields {display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 14px 0;}
+.crop-fields label:first-child {grid-column: auto;}
+.crop-overlay.locked {pointer-events: none; cursor: default;}
+.preview-panel .hint {margin: 9px 0 0;}
+#silent-choice {background: #fff4df;}
+#status {font-weight: 600; margin-bottom: 12px;}
+#status.error {color: #923e2f;}
+.metrics {display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; color: #59695f;}
+.metrics strong {font-size: 18px; color: #263433; display: block;}
+.actions {display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px;}
+button {border: 1px solid #264a3e; border-radius: 9px; background: #264a3e; color: #fff; padding: 12px 17px; font: inherit; font-size: 13px; font-weight: 650; cursor: pointer;}
+button:hover {background: #35624f;}
+button.secondary {background: #edf2e7; color: #264a3e; border-color: #a7b7a0;}
+button:disabled {background: #e8ece6; border-color: #d5ddd0; color: #6b7767; cursor: default;}
+button:focus-visible, input:focus-visible, select:focus-visible {outline: 3px solid #91b481; outline-offset: 3px;}
+.receipt {font-size: 12px; overflow-wrap: anywhere; padding: 16px; border-left: 3px solid #264a3e; background: #f2f6ed; white-space: pre-line;}
+[hidden] {display: none !important;}
+@media(max-width: 520px) {main {padding: 20px;} .settings {grid-template-columns: 1fr;} .crop-fields {grid-template-columns: repeat(2,minmax(0,1fr));} h1 {font-size: 24px;}}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<title>OpenDownloader — fixture de descoberta de streaming</title>
+<style>body{font:17px system-ui;max-width:850px;margin:30px auto;background:#f7f7f1;color:#15352c}video{width:480px;height:270px;background:#17241d}button{padding:12px;background:#264a3e;color:white;border:0;border-radius:6px}code{overflow-wrap:anywhere}</style>
+<h1>Descoberta de fontes HLS/DASH</h1>
+<p>Fixture sintética para testar descoberta de URLs no mesmo documento. Não comprova reprodução nem download de um vídeo real.</p>
+<ol>
+  <li>Sirva esta página via HTTP e disponibilize os manifests em <code>hls/master.m3u8</code> e <code>dash/manifest.mpd</code>, relativos à página.</li>
+  <li>Clique em “Carregar manifests” antes ou depois de procurar players na extensão, para testar tanto entradas anteriores quanto posteriores à injeção.</li>
+  <li>O player usa <code>blob:</code>; o botão deve oferecer “Escolher fonte detectada”, sem enviar nenhuma das fontes automaticamente.</li>
+  <li>A lista deve avisar que são fontes do frame e oferecer HLS e DASH separados. Só escolher uma fonte envia o pedido ao OpenDownloader.</li>
+</ol>
+<video id="player" controls aria-label="Player blob sintético"></video>
+<h2>Componente dentro de shadow DOM aberto</h2>
+<p>Este segundo player está em duas raízes abertas. O componente expõe a URL HLS pública; seu botão deve enviar essa fonte associada, sem depender da lista de requisições.</p>
+<video-minimal-skin id="skin"></video-minimal-skin>
+<p><button id="load" type="button">Carregar manifests</button></p>
+<p id="status" role="status">Nenhuma requisição iniciada pela fixture.</p>
+<script>
+"use strict";
+const mediaSource = new MediaSource();
+document.getElementById('player').src = URL.createObjectURL(mediaSource);
+const outerRoot=document.getElementById('skin').attachShadow({mode:'open'}), component=document.createElement('hlsjs-video');
+component.setAttribute('src',new URL('hls/master.m3u8',location.href).href);outerRoot.append(component);
+const innerRoot=component.attachShadow({mode:'open'}), innerVideo=document.createElement('video');
+innerVideo.controls=true;innerVideo.setAttribute('aria-label','Player HLS em shadow DOM aberto');innerVideo.style.cssText='width:480px;height:270px;background:#17241d';
+innerVideo.src=URL.createObjectURL(new MediaSource());innerRoot.append(innerVideo);
+document.getElementById('load').addEventListener('click',async()=>{
+  const status=document.getElementById('status');
+  const replies=await Promise.allSettled(['hls/master.m3u8','dash/manifest.mpd'].map(async path=>{
+    const response=await fetch(path,{credentials:'omit'});if(!response.ok)throw Error(`${path}: HTTP ${response.status}`);await response.text();return path;
+  }));
+  status.textContent=replies.map(result=>result.status==='fulfilled'?`${result.value}: recebido`:String(result.reason)).join(' | ');
+});
+</script>
+</html>

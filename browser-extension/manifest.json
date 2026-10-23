@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "minimum_chrome_version": "106",
+  "name": "OpenDownloader",
+  "version": "0.6.0",
+  "description": "Envie arquivos e vídeos ao OpenDownloader ou grave a reprodução com escolha explícita da fonte.",
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Enviar um link ao OpenDownloader",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwkw1Z7KPZ3BtkQW78WAh+BvoQ86jZXR4XZ7duquC+P7nSF0hAnm1wO3uF0CPRPNV3Ms5Y6Yq2ehMqpHmgWVLffqn+tksEL9M25f8o5jPtong495qllrFDMenvcttrQrMW8LzQjtlygGLIE6u9DF5fsjWex3Lj2xqjTo0gafk0k055RUqoybik/9GKC2h1a9JShd/pMD+fMMcXIUKclxHWJ9rogR5Q1W+3E3rJoh9fqJvCjsu9fpMMoU9YkBArCroB4nCDffnWdAKCw/RpPMSaCatAzqOI9iMq8aalMttWuQBV35wMyqIYFF9UYRqPApfB66mEUIUwuoLdcakXPJNRwIDAQAB",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenDownloader</title>
+    <link rel="stylesheet" href="popup.css">
+    <script src="popup.js" defer></script>
+  </head>
+  <body>
+    <header><span class="mark" aria-hidden="true">↓</span><div><strong>OpenDownloader</strong><span class="subtitle">Downloads no seu computador</span></div></header>
+    <main>
+      <h1>Escolha o próximo download.</h1>
+      <p>Envie um arquivo ou vídeo ao OpenDownloader. Confira nome, pasta e formato no aplicativo antes de baixar.</p>
+      <form id="link-form">
+        <label for="url">Link direto do arquivo</label>
+        <input id="url" name="url" type="url" placeholder="https://…" maxlength="8192" required autocomplete="off" spellcheck="false" autofocus>
+        <button id="send" type="submit">Enviar ao OpenDownloader <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="hint">Para identificar o vídeo desta página, use “Procurar nesta página” abaixo.</p>
+      <p id="status" class="status" role="status" aria-live="polite">O OpenDownloader abre automaticamente para confirmar as opções.</p>
+      <section aria-labelledby="media-heading">
+        <h2 id="media-heading">Vídeos e áudios da página</h2>
+        <button id="scan" type="button" class="secondary">Procurar nesta página</button>
+        <ul id="media-list" aria-live="polite"></ul>
+        <p id="site-label" class="hint"></p>
+        <button id="site" type="button" class="secondary" disabled>Ativar botões neste site</button>
+      </section>
+      <p class="hint">Também disponível no clique direito de um link: <strong>Baixar com OpenDownloader</strong>.</p>
+      <section aria-labelledby="recording-heading">
+        <h2 id="recording-heading">Gravação durante a reprodução</h2>
+        <p class="hint">Escolha uma aba ou janela e compartilhe seu áudio no seletor do navegador.</p>
+        <button id="record" type="button" class="secondary">Gravar reprodução</button>
+      </section>
+      <p id="menu-status" class="hint" role="status" aria-live="polite">Conferindo o menu de links…</p>
+      <button id="bridge" type="button" class="secondary">Verificar conexão com o aplicativo</button>
+      <p id="bridge-status" class="hint" role="status" aria-live="polite">O diagnóstico não inicia downloads nem abre o aplicativo.</p>
+    </main>
+    <footer>Você escolhe os downloads. Detecção automática só nos sites autorizados. Sem acesso a cookies.</footer>
+  </body>
+</html>

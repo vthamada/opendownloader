@@ -1,0 +1,11 @@
+.cache/
+.cache-*.txt
+.venv/
+build/
+dist/
+__pycache__/
+*.pyc
+*.pem
+*.key
+/public-compatibility/
+/docs/PLANO-EVOLUCAO-LUME.md
