@@ -7,6 +7,30 @@ compatibilidade com a fila e as extensões existentes. Veja [a mudança de nome]
 Gerenciador de downloads local para Windows, com interface em português e código autoral.
 Funciona sem instalar ou executar o IDM. Não usa suas DLLs, drivers ou código.
 
+## Baixar e instalar (Windows x64)
+
+**[Baixar o instalador do OpenDownloader 1.13.0](https://github.com/vthamada/opendownloader/releases/download/v1.13.0/OpenDownloaderSetup-1.13.0-windows-x64.exe)**
+
+[Notas da release](https://github.com/vthamada/opendownloader/releases/tag/v1.13.0)
+· [Arquivo SHA-256 para conferir a integridade](https://github.com/vthamada/opendownloader/releases/download/v1.13.0/OpenDownloaderSetup-1.13.0-windows-x64.sha256).
+
+1. Baixe o instalador pelo link acima. Se estiver atualizando, feche o OpenDownloader antes de continuar.
+2. Execute `OpenDownloaderSetup-1.13.0-windows-x64.exe`, confirme a pasta e conclua o assistente.
+   A pasta padrão é `%LOCALAPPDATA%\Programs\LumeDownloads`.
+3. Abra o **OpenDownloader** pelo atalho criado no menu Iniciar.
+4. Para conectar o navegador, use a tela **Conectar navegadores** do assistente ou
+   o menu **Navegadores → Conectar Chrome e Edge**. Selecione Chrome ou Edge e copie
+   o caminho da extensão mostrado pelo aplicativo. No gerenciador de extensões,
+   ative **Modo do desenvolvedor**, escolha **Carregar sem compactação** e selecione essa pasta.
+   Faça isso uma vez em cada navegador; após atualizar, recarregue a extensão para a versão 0.6.0.
+5. No popup da extensão, clique em **Verificar conexão com o aplicativo**.
+   Depois envie um arquivo conhecido, confirme o download no aplicativo e confira sua conclusão.
+
+O instalador inclui Python e os componentes de mídia Node.js e FFmpeg/ffprobe;
+não é necessário instalá-los separadamente. A fila e os downloads ficam fora da
+pasta de instalação e são preservados na atualização.
+Veja o [guia de instalação](docs/DISTRIBUICAO-LOCAL.md) para detalhes.
+
 ## Abrir
 
 O instalador OpenDownloader 1.13.0 reúne aplicativo, componentes de vídeo privados,
@@ -81,7 +105,7 @@ Ctrl+Enter abre confirmação/detalhes; os atalhos não atuam em campos de ediç
 O aplicativo não executa automaticamente arquivos baixados. Atualizações são preparadas para
 revisão e troca manual com o aplicativo fechado; não há servidor de atualização ou chave de
 produção preconfigurados. Verifique **Segurança → Preparar atualização assinada** e [UPDATES](docs/UPDATES.md).
-A entrega atual usa ZIP local e SHA-256, sem identidade de assinatura de produção:
+A entrega atual usa o instalador Windows e SHA-256, sem identidade de assinatura de produção:
 veja [DISTRIBUICAO-LOCAL](docs/DISTRIBUICAO-LOCAL.md).
 
 Se o recurso mudou ou o servidor não permite retomada segura, o OpenDownloader preserva as partes e
